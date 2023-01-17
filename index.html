@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>commputer-choice => <samp id="commputer-choics"></samp></h1>
+    <h1>user-choice => <samp id="user-choice"></samp></h1>
+    <h1>result : <samp id="result"></samp></h1>
+
+    <button>Rock</button>
+    <button>Paper</button>
+    <button>Scissors</button>
+
+    <script>
+        ComputerDesplay = document.getElementById("commputer-choics")
+        UserDesplay = document.getElementById("user-choice")
+        Result = document.getElementById("result")
+        Button = document.querySelectorAll("button")
+
+        Button.forEach(x => {
+            x.addEventListener("click", (event) => {
+                console.log(event.target.innerHTML);
+                UserDesplay.innerHTML = event.target.innerHTML
+                getcomputer()
+                getresult()
+
+            })
+        })
+        function getcomputer() {
+            console.log("1");
+            let randomnumber = Math.floor(Math.random() * 3 + 1)
+            if (randomnumber === 1) {
+                ComputerChoice = "Rock"
+            }
+            if (randomnumber === 2) {
+                ComputerChoice = "Paper"
+            }
+            if (randomnumber === 3) {
+                ComputerChoice = "Scissors"
+            }
+            ComputerDesplay.innerHTML = ComputerChoice
+        }
+
+        function getresult() {
+            c = ComputerDesplay.innerHTML
+            u = UserDesplay.innerHTML
+            if (c === u) {
+                resultchoes = "its a draw !!"
+            }
+            if (c == "Rock" && u == "Paper") {
+                resultchoes = " you win !!"
+            }
+            if (c == "Rock" && u == "Scissors") {
+                resultchoes = "you lost !!"
+            }
+            if (c == "Scissors" && u == "Paper") {
+                resultchoes = "you lost !!"
+            }
+            if (c == "Scissors" && u == "Rock") {
+                resultchoes = " you win !!"
+            }
+            if (c == "Paper" && u == "Rock") {
+                resultchoes = "you lost !!"
+            }
+            if (c == "Paper" && u == "Scissors") {
+                resultchoes = " you win !!"
+            }
+            Result.innerHTML = resultchoes
+        }
+
+
+
+    </script>
+</body>
+
+</html>
